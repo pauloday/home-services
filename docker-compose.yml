@@ -1,0 +1,15 @@
+services:
+  home:
+    image: ghcr.io/home-assistant/home-assistant:dev
+    container_name: home
+    network_mode: host
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - /serve/home/config:/config
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
